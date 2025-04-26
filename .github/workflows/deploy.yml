@@ -10,11 +10,19 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      - name: Install OpenSSL 1.0.2
+      - name: Install dependencies for OpenSSL build
         run: |
-          sudo add-apt-repository -y ppa:ondrej/apache2
           sudo apt-get update
-          sudo apt-get install -y openssl=1.0.2g-1ubuntu4.20 libssl1.0.0=1.0.2g-1ubuntu4.20
+          sudo apt-get install -y build-essential checkinstall zlib1g-dev
+
+      - name: Download and install OpenSSL 1.0.2
+        run: |
+          wget https://www.openssl.org/source/openssl-1.0.2u.tar.gz
+          tar -xvf openssl-1.0.2u.tar.gz
+          cd openssl-1.0.2u
+          ./config
+          make
+          sudo make install
       
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
