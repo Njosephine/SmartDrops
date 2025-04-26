@@ -10,8 +10,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      - name: Install libssl
-        run: sudo apt-get update && sudo apt-get install -y libssl-dev
+      - name: Install OpenSSL 1.0.2
+        run: |
+          sudo add-apt-repository -y ppa:ondrej/apache2
+          sudo apt-get update
+          sudo apt-get install -y openssl=1.0.2g-1ubuntu4.20 libssl1.0.0=1.0.2g-1ubuntu4.20
       
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
