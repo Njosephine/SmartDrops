@@ -1,11 +1,9 @@
 name: Deploy to Vercel
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,6 +31,11 @@ jobs:
       
       - name: Build frontend assets
         run: npm run build
+      
+      - name: Create api directory and copy index.php
+        run: |
+          mkdir -p api
+          echo '<?php require __DIR__ . "/../public/index.php";' > api/index.php
       
       - name: Run tests
         env:
