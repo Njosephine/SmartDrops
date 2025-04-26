@@ -1,36 +1,31 @@
 {
     "version": 2,
-    "framework": null,
-    "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.6.0"
-        }
-    },
-    "routes": [
-        {
-            "src": "/(css|js|images|fonts)/(.*)",
-            "dest": "/public/$1/$2"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
-        }
+    "builds": [
+      { "src": "/api/index.php", "use": "vercel-php@0.6.0" },
+      { "src": "/public/**", "use": "@vercel/static" }
     ],
-    "outputDirectory": "public",
+    "routes": [
+      { "src": "/build/assets/(.*)", "dest": "/public/build/assets/$1" },
+      { "src": "/css/(.*)", "dest": "/public/css/$1" },
+      { "src": "/js/(.*)", "dest": "/public/js/$1" },
+      { "src": "/images/(.*)", "dest": "/public/images/$1" },
+      { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+      { "src": "/robots.txt", "dest": "/public/robots.txt" },
+      { "src": "/(.*)", "dest": "/api/index.php" }
+    ],
     "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://smart-drops.vercel.app",
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp/views",
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
-        "SSR_TEMP_PATH": "/tmp/ssr",
-        "NODE_PATH": "node"
+      "APP_NAME": "Laravel",
+      "APP_ENV": "production",
+      "APP_DEBUG": "false",
+      "APP_URL": "https://smart-drops.vercel.app",
+      "APP_CONFIG_CACHE": "/tmp/config.php",
+      "APP_EVENTS_CACHE": "/tmp/events.php",
+      "APP_PACKAGES_CACHE": "/tmp/packages.php",
+      "APP_ROUTES_CACHE": "/tmp/routes.php",
+      "APP_SERVICES_CACHE": "/tmp/services.php",
+      "VIEW_COMPILED_PATH": "/tmp/views",
+      "CACHE_DRIVER": "array",
+      "LOG_CHANNEL": "stderr",
+      "SESSION_DRIVER": "cookie"
     }
-}
+  }
