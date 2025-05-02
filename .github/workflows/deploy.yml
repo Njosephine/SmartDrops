@@ -37,7 +37,7 @@ jobs:
         env:
           DB_CONNECTION: pgsql
           DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: 5432
+          DB_PORT: 6543
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -47,7 +47,7 @@ jobs:
         env:
           DB_CONNECTION: pgsql
           DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: 5432
+          DB_PORT: 6543
           DB_DATABASE: ${{ secrets.DB_DATABASE }}
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
