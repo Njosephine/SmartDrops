@@ -1,4 +1,4 @@
-name: Deploy Laravel to Render
+name: ci
 
 on:
   push:
