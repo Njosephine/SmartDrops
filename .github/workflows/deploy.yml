@@ -2,7 +2,7 @@ name: Deploy Laravel to Render
 
 on:
   push:
-    branches: [render-deploy]
+    branches: [main]
 
 jobs:
   deploy:
