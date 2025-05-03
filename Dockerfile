@@ -1,3 +1,21 @@
+# Stage 1: Build assets
+FROM node:18 AS node-builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy only necessary files for frontend build
+COPY package*.json ./
+RUN npm install
+
+# Copy the rest of the project files
+COPY . .
+
+# Build assets
+RUN npm run build
+
+# Stage 2: PHP + Composer + final Laravel app
+
 # Use the official PHP image with required extensions
 FROM php:8.3-fpm
 
